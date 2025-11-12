@@ -167,6 +167,28 @@ public class ColorPickerDialog extends DialogFragment implements ColorPickerView
         return new Builder();
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (colorPickerDialogListener != null) return;
+        if (getParentFragment() instanceof ColorPickerDialogListener) {
+            colorPickerDialogListener = (ColorPickerDialogListener) getParentFragment();
+        } else if (context instanceof ColorPickerDialogListener)  {
+            colorPickerDialogListener = (ColorPickerDialogListener) context;
+        } else {
+            throw new RuntimeException((getParentFragment() != null ?
+                    getParentFragment().toString() : context.toString())
+                    + " must implement ColorPickerDialogListener"
+            );
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        colorPickerDialogListener = null;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
