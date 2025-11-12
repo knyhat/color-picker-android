@@ -614,27 +614,13 @@ public class ColorPickerDialog extends DialogFragment implements ColorPickerView
 
     private void onColorSelected(int color) {
         if (colorPickerDialogListener != null) {
-            Log.w(TAG, "Using deprecated listener which may be remove in future releases");
             colorPickerDialogListener.onColorSelected(dialogId, color);
-            return;
-        }
-        Activity activity = getActivity();
-        if (activity instanceof ColorPickerDialogListener) {
-            ((ColorPickerDialogListener) activity).onColorSelected(dialogId, color);
-        } else {
-            Log.e(TAG, "The activity must implement ColorPickerDialogListener");
         }
     }
 
     private void onDialogDismissed() {
         if (colorPickerDialogListener != null) {
-            Log.w(TAG, "Using deprecated listener which may be remove in future releases");
             colorPickerDialogListener.onDialogDismissed(dialogId);
-            return;
-        }
-        Activity activity = getActivity();
-        if (activity instanceof ColorPickerDialogListener) {
-            ((ColorPickerDialogListener) activity).onDialogDismissed(dialogId);
         }
     }
 
