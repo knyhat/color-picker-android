@@ -294,6 +294,7 @@ public class ColorPickerDialog extends DialogFragment implements ColorPickerView
      * Note: The preferred way to handle the callback is to have the calling Activity implement
      * {@link ColorPickerDialogListener} as this will not survive an orientation change.
      *
+     * @deprecated
      * @param colorPickerDialogListener The callback invoked when a color is selected or the dialog is dismissed.
      */
     public void setColorPickerDialogListener(ColorPickerDialogListener colorPickerDialogListener) {
